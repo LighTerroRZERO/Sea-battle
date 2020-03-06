@@ -11,6 +11,7 @@ const play = {
   hit: 0,
   dead: 0,
   set updateData(data) {
+
     this[data]++;
     this.render();
   },
@@ -42,9 +43,11 @@ const show = {
 
 
 const fire = (event) => {
-  const target = event.target;
-  show.miss(target);
-  play.updateData = 'shot';
+    const target = event.target;
+    if (target.className != 'miss') {
+      show.miss(target);
+      play.updateData = 'shot';
+    }
 };
 
 const init = () => {
